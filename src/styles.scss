@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@use "sass:map";
+@use "abstracts/shared" as *;
+// 1. Importar los Iconos de Bootstrap
+@use "bootstrap-icons/font/bootstrap-icons.css";
+// 2. Importar Bootstrap (Sass)
+// Esto te permite usar variables, mixins y todas las funciones de Bootstrap
+@use "bootstrap/scss/bootstrap";
+
+/* Bootstrap Overrides */
+:root {
+  --bs-primary-rgb: 0, 0, 128;
+}
+
+/* Bootstrap Button Overrides */
+.btn-primary {
+  --bs-btn-bg: #000080;
+  --bs-btn-border-color: #000080;
+  --bs-btn-hover-bg: #000066;
+  --bs-btn-hover-border-color: #000066;
+  --bs-btn-disabled-bg: #000080;
+  --bs-btn-disabled-border-color: #000080;
+}
+
+footer {
+  background: map.get($colors, "primary");
+}
