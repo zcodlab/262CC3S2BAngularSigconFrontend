@@ -27,4 +27,9 @@ export class Home implements OnInit, OnDestroy {
   prevSlide() {
     this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
   }
+
+  goToSlide(index: number) {
+    this.currentIndex = index;
+  }
+
 }

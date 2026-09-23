@@ -73,3 +73,12 @@
 }
 .prev { left: rem(20px); }
 .next { right: rem(20px); }
+
+/* --- CONTROLES PUNTOS DEL SLIDER --- */
+.slider-dots { position: absolute; bottom: rem(20px); width: 100%; text-align: center; z-index: 10; }
+.dot {
+  cursor: pointer; height: rem(12px); width: rem(12px); margin: 0 rem(5px);
+  background-color: #bbb; border-radius: 50%; display: inline-block;
+  transition: background-color 0.3s;
+  &.dot-active, &:hover { background-color: map.get($colors, "primary"); }
+}
