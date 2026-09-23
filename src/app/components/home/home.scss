@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "abstracts/shared" as *;
+
+.slider-container{
+  position: relative;
+  width: 100%;
+  height: calc(100vh - rem(70px));
+  min-height: rem(500px);
+  overflow: hidden;
+  background-color: map.get($colors,"bg-light");
+}
