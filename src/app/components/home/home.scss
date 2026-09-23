@@ -20,10 +20,21 @@
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
   transition: opacity 0.8s ease-in-out;
   display:flex;
   justify-content: center;
   align-items: center;
+}
+
+.slider-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ /*background: rgba(0, 0, 0, 0.4);*/
+  z-index: 1;
 }
 
 .hero-overlay {
@@ -41,3 +52,24 @@
 .hero-row {
   min-height: 80vh;
 }
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slide.active {
+  opacity: 1;
+}
+
+/* --- CONTROLES DEL SLIDER (MANTENIDOS) --- */
+.slider-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.2); color: map.get($colors, "white"); width: rem(50px); height: rem(50px);
+  border: none; cursor: pointer; font-size: rem(24px); z-index: 10;
+  border-radius: 50%; display: flex; justify-content: center; align-items: center;
+  transition: background 0.3s;
+  &:hover { background: rgba(0,0,0,0.5); }
+}
+.prev { left: rem(20px); }
+.next { right: rem(20px); }

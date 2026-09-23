@@ -1,9 +1,9 @@
 <app-header />
 <div class="slider-container">
   <div class="slider">
-      @for(slide of slides; track i; let i=$index){
-        <div class="slide" [class.active]="i===currentIndex">
-          <img src="slide.url" alt="sigcon-slider">
+      @for(slide of slides; track i; let i =$index){
+        <div class="slide" [class.active]="i === currentIndex">
+          <img [src]="slide.url" alt="sigcon-slider">
           <div class="slider-overlay"></div>
 
           <div class="hero-overlay">
@@ -107,8 +107,10 @@
 
           </div><!--end hero-overlay-->
         </div><!--end slide-->
-
       }<!--end for-->
+      <button class="slider-btn prev" (click)="prevSlide()">&#10094;</button>
+      <button class="slider-btn next" (click)="nextSlide()">&#10095;</button>
   </div><!--end slider-->
+
 </div><!--end slider-container-->
 <app-footer />
