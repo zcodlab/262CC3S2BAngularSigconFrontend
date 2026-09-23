@@ -32,4 +32,6 @@ export class Home implements OnInit, OnDestroy {
     this.currentIndex = index;
   }
 
+
+
 }

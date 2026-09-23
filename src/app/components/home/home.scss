@@ -108,3 +108,17 @@
   height: rem(40px);
 }
 
+.feature-card-bootstrap {
+  background: #f8f9ff;
+  border: rem(1px) solid #eef0ff;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(rem(-10px));
+    border-color: map.get($colors, "primary");
+    background: map.get($colors, "white");
+  }
+}
+
+.cta-section {
+  background: linear-gradient(135deg, map.get($colors, "primary") 0%, map.get($colors, "primary-dark") 100%);
+}
