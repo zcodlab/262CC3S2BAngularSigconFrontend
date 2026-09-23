@@ -82,3 +82,29 @@
   transition: background-color 0.3s;
   &.dot-active, &:hover { background-color: map.get($colors, "primary"); }
 }
+
+.title-underline {
+  height: rem(4px);
+  width: rem(80px);
+}
+
+.solution-card-bootstrap {
+  transition: all 0.4s ease;
+  &:hover {
+    transform: translateY(rem(-10px));
+    box-shadow: 0 rem(15px) rem(35px) rgba(0,0,128,0.2) !important;
+    .solution-img { transform: scale(1.1); }
+  }
+}
+
+.solution-img {
+  transition: transform 0.6s ease;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.solution-badge-size {
+  width: rem(40px);
+  height: rem(40px);
+}
+
