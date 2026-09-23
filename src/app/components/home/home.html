@@ -1,7 +1,114 @@
 <app-header />
 <div class="slider-container">
   <div class="slider">
-      <p>home works!</p>
-  </div>
-</div>
+      @for(slide of slides; track i; let i=$index){
+        <div class="slide" [class.active]="i===currentIndex">
+          <img src="slide.url" alt="sigcon-slider">
+          <div class="slider-overlay"></div>
+
+          <div class="hero-overlay">
+            @switch (slide.type) {
+              @case ('hero'){
+                <div class="container">
+                    <div class="row align-items-center justify-content-start hero-row">
+                      <div class="col-lg-8 text-white">
+                        <h1 class="display-3 fw-bold mb-4 text-uppercase text-shadow">EL MEJOR SOFTWARE PARA ADMINISTRAR EDIFICIOS</h1>
+                        <p class="lead mb-5 text-shadow">Gestiona tu condominio de forma eficiente, profesional y transparente con la plataforma líder en el mercado.</p>
+                        <div class="d-flex gap-3">
+                          <a routerLink="/contact" class="btn btn-primary btn-lg px-4 fw-bold">Solicitar Demo</a>
+                          <a href="#solution" class="btn btn-outline-light btn-lg px-4 fw-bold">Saber más</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!--end class="container"-->
+              }<!--end case hero-->
+
+              @case ('about') {
+                  <!-- TIPO ABOUT -->
+                  <div class="container">
+                    <div class="row align-items-center hero-row">
+                      <div class="col-lg-7 text-white text-shadow">
+                        <h2 class="display-4 fw-bold mb-3">¿Por qué elegir Sigcon?</h2>
+                        <div class="title-underline-left bg-primary title-underline"></div>
+                        <p class="lead mb-4">Sigcon es la plataforma líder para la administración de edificios y condominios. Nuestra herramienta simplifica las tareas diarias de los administradores y mejora la comunicación con los residentes.</p>
+                        <ul class="list-unstyled">
+                          <li class="d-flex align-items-center mb-3 fs-5"><span class="badge bg-primary rounded-circle me-3 p-2">✓</span> <strong>Automatización total:</strong> Reduce el trabajo manual en un 70%.</li>
+                          <li class="d-flex align-items-center mb-3 fs-5"><span class="badge bg-primary rounded-circle me-3 p-2">✓</span> <strong>Transparencia:</strong> Reportes financieros claros para todos.</li>
+                          <li class="d-flex align-items-center mb-3 fs-5"><span class="badge bg-primary rounded-circle me-3 p-2">✓</span> <strong>Soporte 24/7:</strong> Estamos contigo cuando nos necesites.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                }<!--end case about-->
+                @case ('easy') {
+                  <!-- TIPO EASY -->
+                  <div class="container h-100 d-flex align-items-center">
+                    <div class="w-100 text-white text-center">
+                      <h2 class="display-4 fw-bold mb-5 text-shadow">Es fácil</h2>
+                      <div class="row g-4 justify-content-center">
+                        <div class="col-lg col-md-4">
+                          <div class="p-4 rounded-3 h-100 glass-card">
+                            <div class="text-warning fw-bold mb-2 fs-4">01</div>
+                            <div class="bg-warning mb-3 step-underline"></div>
+                            <h3 class="h4">Ingresa</h3>
+                            <p class="small">Accede a Sigcon desde cualquier dispositivo</p>
+                          </div>
+                        </div>
+                        <div class="col-lg col-md-4">
+                          <div class="p-4 rounded-3 h-100 glass-card">
+                            <div class="text-warning fw-bold mb-2 fs-4">02</div>
+                            <div class="bg-warning mb-3 step-underline"></div>
+                            <h3 class="h4">Registra</h3>
+                            <p class="small">Registra tus gastos y servicios del edificio</p>
+                          </div>
+                        </div>
+                        <div class="col-lg col-md-4">
+                          <div class="p-4 rounded-3 h-100 glass-card">
+                            <div class="text-warning fw-bold mb-2 fs-4">03</div>
+                            <div class="bg-warning mb-3 step-underline"></div>
+                            <h3 class="h4">Imprime y envía</h3>
+                            <p class="small">Genera y distribuye recibos de cobranza</p>
+                          </div>
+                        </div>
+                        <div class="col-lg col-md-6">
+                          <div class="p-4 rounded-3 h-100 glass-card">
+                            <div class="text-warning fw-bold mb-2 fs-4">04</div>
+                            <div class="bg-warning mb-3 step-underline"></div>
+                            <h3 class="h4">Cobra y paga</h3>
+                            <p class="small">Gestiona cobros y pagos del condominio</p>
+                          </div>
+                        </div>
+                        <div class="col-lg col-md-6">
+                          <div class="p-4 rounded-3 h-100 glass-card">
+                            <div class="text-warning fw-bold mb-2 fs-4">05</div>
+                            <div class="bg-warning mb-3 step-underline"></div>
+                            <h3 class="h4">Consulta</h3>
+                            <p class="small">Accede a información en línea las 24 horas</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                }<!--end case easy-->
+                @case ('problems') {
+                  <!-- TIPO PROBLEMS -->
+                  <div class="container h-100 d-flex align-items-center">
+                    <div class="w-100 text-white text-center">
+                      <h2 class="display-3 fw-bold mb-2 text-shadow">Olvídate de los problemas</h2>
+                      <h3 class="display-6 fw-bold mb-5 text-warning text-shadow">Administra con SIGCON</h3>
+                      <div class="mt-4">
+                        <a routerLink="/contact" class="btn btn-primary btn-lg px-5">Contáctanos</a>
+                      </div>
+                    </div>
+                  </div>
+                }<!--end case problems-->
+
+            }<!--end switch-->
+
+          </div><!--end hero-overlay-->
+        </div><!--end slide-->
+
+      }<!--end for-->
+  </div><!--end slider-->
+</div><!--end slider-container-->
 <app-footer />
