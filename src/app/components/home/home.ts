@@ -17,8 +17,30 @@ export class Home implements OnInit, OnDestroy {
     { url: 'assets/imagenes/slider/bg4.jpg', type: 'problems' }
   ];
   currentIndex = 0;
-  ngOnInit(){}
-  ngOnDestroy(){}
+  private intervalId: any;
+
+  ngOnInit(){
+    this.startSlider();
+    this.startTestimonialSlider();
+  }
+
+  ngOnDestroy(){
+    if (this.intervalId) clearInterval(this.intervalId);
+    if (this.testimonialIntervalId) clearInterval(this.testimonialIntervalId);
+  }
+
+  startSlider() {
+    this.intervalId = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+   // Testimonial Slider Logic
+  startTestimonialSlider() {
+    this.testimonialIntervalId = setInterval(() => {
+      this.nextTestimonial();
+    }, 6000);
+  }
 
   nextSlide() {
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
@@ -32,6 +54,38 @@ export class Home implements OnInit, OnDestroy {
     this.currentIndex = index;
   }
 
+  testimonials = [
+    {
+      text: 'Excelente herramienta, nos ha ahorrado mucho tiempo y esfuerzo al momento de realizar las cobranzas a nuestros inquilinos',
+      author: 'Administración Edificio Horizonte'
+    },
+    {
+      text: 'Muy flexible y se adapta perfectamente a las necesidades de los condominios que administramos',
+      author: 'DSW Soluciones'
+    },
+    {
+      text: 'La transparencia en los reportes financieros ha mejorado la confianza de todos los copropietarios.',
+      author: 'Condominio Las Praderas'
+    },
+    {
+      text: 'El soporte técnico es excepcional, siempre están dispuestos a ayudar con cualquier duda.',
+      author: 'Residencial San Felipe'
+    }
+  ];
 
+  testimonialIndex = 0;
+  private testimonialIntervalId: any;
+
+  nextTestimonial() {
+    this.testimonialIndex = (this.testimonialIndex + 1) % this.testimonials.length;
+  }
+
+  prevTestimonial() {
+    this.testimonialIndex = (this.testimonialIndex - 1 + this.testimonials.length) % this.testimonials.length;
+  }
+
+  goToTestimonial(index: number) {
+    this.testimonialIndex = index;
+  }
 
 }

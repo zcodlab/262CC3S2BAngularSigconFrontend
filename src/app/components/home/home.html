@@ -302,5 +302,47 @@
   </div><!--end container-->>
 </section><!--end 3° seccion-->
 
+<!--4° SECCION: Testimonios-->
+<section class="py-5 testimonials-section text-white">
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-5 fw-bold mb-2">Testimonios de nuestros clientes</h2>
+      <p class="lead opacity-75">¿Qué opinan nuestros clientes sobre Sigcon?</p>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 position-relative testimonials-wrapper">
+        @for (t of testimonials; track i; let i = $index) {
+          <div class="testimonial-card-slider text-center p-5 rounded-4 bg-white text-dark shadow-lg h-100 d-flex flex-column justify-content-center" [class.active-testimonial]="i === testimonialIndex">
+            <span class="display-1 text-primary opacity-25 position-absolute top-0 start-0 ms-3 mt-n2">"</span>
+            <p class="fs-5 fw-normal italic mb-4">{{ t.text }}</p>
+            <p class="fw-bold text-primary mb-0">— {{ t.author }}</p>
+            <span class="display-1 text-primary opacity-25 position-absolute bottom-0 end-0 me-3 mb-n2">"</span>
+          </div>
+        }
+
+        <button class="t-slider-btn t-prev" (click)="prevTestimonial()">&#10094;</button>
+        <button class="t-slider-btn t-next" (click)="nextTestimonial()">&#10095;</button>
+      </div>
+    </div><!--end row-->
+
+    <div class="text-center mb-4">
+      <div class="d-flex justify-content-center gap-2">
+        @for (dot of testimonials; track i; let i = $index) {
+          <span class="t-dot"
+                [class.t-dot-active]="i === testimonialIndex"
+                (click)="goToTestimonial(i)"></span>
+        }
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-8 text-center">
+        <h3 class="fw-bold h4 mb-3">Somos DSW</h3>
+        <p class="opacity-75">Establecida por un grupo de profesionales con experiencia en sistemas y tecnología, DSW proporciona soluciones flexibles y personalizadas adaptadas a los requisitos particulares de nuestros clientes.</p>
+      </div>
+    </div>
+  </div>
+</section><!--end 4 seccion-->
 
 <app-footer />
