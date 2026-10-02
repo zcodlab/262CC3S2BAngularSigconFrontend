@@ -2,6 +2,10 @@ import { Component,inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule,Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { UserRequest } from '../../../model/api/request/user-request';
+import { UserResponse } from '../../../model/api/response/user-response';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -12,6 +16,11 @@ import { Router, RouterModule } from '@angular/router';
 export class InicioSesion {
   location = inject(Location);
   router = inject(Router);
+  authService = inject(AuthService);
+  sessionService = inject(SessionService);
+  userRequest:UserRequest={} as UserRequest;
+  userResponse:UserResponse={} as UserResponse;
+
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -24,8 +33,25 @@ export class InicioSesion {
     const { email, password } = this.form.value;
     if (!email || !password) return;
 
-    alert('Ingreso exitoso')
-    this.router.navigate(['/principal']);
+    this.userRequest.email=email;
+    this.userRequest.password=password;
+
+    this.authService.login(this.userRequest).subscribe(
+      (result: UserResponse)=>{
+        this.userResponse=result;
+        console.log(this.userResponse);
+        console.log('Login successful');
+        this.authService.setToken(this.userResponse.token);
+        console.log(this.sessionService.getInfoSession());
+        alert('Ingreso exitoso')
+        this.router.navigate(['/principal']);
+      },
+      (err:any)=>{
+        console.log(err);
+        console.log('Login failed');
+        alert('Ingreso fallido')
+      }
+    );
    }
 
    onBack() {
