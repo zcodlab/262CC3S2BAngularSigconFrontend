@@ -6,6 +6,7 @@ import { AuthService } from '../../../services/auth.service';
 import { UserRequest } from '../../../model/api/request/user-request';
 import { UserResponse } from '../../../model/api/response/user-response';
 import { SessionService } from '../../../services/session.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -46,10 +47,11 @@ export class InicioSesion {
         alert('Ingreso exitoso')
         this.router.navigate(['/principal']);
       },
-      (err:any)=>{
+      (err:HttpErrorResponse)=>{
         console.log(err);
         console.log('Login failed');
-        alert('Ingreso fallido')
+        const mensajeError = err.error?.message || 'Ingreso fallido';
+        alert(mensajeError);
       }
     );
    }
