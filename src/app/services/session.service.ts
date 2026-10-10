@@ -5,9 +5,9 @@ import { UserSesion } from '../model/user-sesion';
   providedIn: 'root',
 })
 export class SessionService {
-
   private getDecodedToken():any|null{
     const token = localStorage.getItem('user_token');
+
     if (token) {
       const decodedTokenString=atob(token.split('.')[1]);
       return JSON.parse(decodedTokenString);
